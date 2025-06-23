@@ -13,8 +13,8 @@ public class Product : IProduct
     public bool IsExpensive ()
         => Price > 100;
     
-    public bool IsNew () 
-        => (DateTime.Now - CreatedAt).TotalDays <= 30;
+    public bool IsNew()
+        => (DateTime.Now.Date - CreatedAt.Date).TotalDays <= 30;
     
     public void ApplyDiscount(decimal percentage)
     {

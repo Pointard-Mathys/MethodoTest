@@ -3,16 +3,16 @@ namespace Calculator;
 public class Operation : IOperation
 {
     public int Add(int a, int b) => a + b;
+    
+    public int Subtract(int a, int b) => a - b;
 
-    public int Subtract(int a, int b)
-    {
-        throw new NotImplementedException();
-    }
+    public int Multiply(int a, int b) => a * b;
 
-    public int Multiply(int a, int b)
-    {
-        throw new NotImplementedException();
-    }
+    public int Power(int a, int b) => (int)Math.Pow(a, b);
+
+    public int Square(int a) => a * a;
+
+    public int Cube(int a) => a * a * a;
 
     public double Divide(int a, int b)
     {
@@ -21,38 +21,28 @@ public class Operation : IOperation
         return (double)a / b;
     }
 
-    public int Power(int a, int b)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int Square(int a)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int Cube(int a)
-    {
-        throw new NotImplementedException();
-    }
-
     public int Factorial(int a)
     {
-        throw new NotImplementedException();
+        if (a < 0)
+            throw new ArgumentOutOfRangeException(nameof(a), "Le nombre doit être positif ou nul");
+
+        int result = 1;
+        for (int i = 2; i <= a; i++)
+            result *= i;
+        return result;
     }
 
     public int SquareRoot(int a)
     {
-        throw new NotImplementedException();
+        if (a < 0)
+            throw new ArgumentOutOfRangeException(nameof(a), "Le nombre doit être positif ou nul");
+        return (int)Math.Sqrt(a);
     }
 
     public int CubeRoot(int a)
     {
-        throw new NotImplementedException();
+        return (int)Math.Round(Math.Cbrt(a));
     }
 
-    public bool IsEven(int number)
-    {
-        throw new NotImplementedException();
-    }
+    public bool IsEven(int number) => number % 2 == 0;
 }

@@ -125,7 +125,7 @@ public class ProductTest
     {
         var product = new Product
         {
-            CreatedAt = DateTime.Now.Date.AddDays(-30) // ⚠️ .Date fixe à 00:00:00
+            CreatedAt = DateTime.Now.Date.AddDays(-30)
         };
 
         product.IsNew().Should().BeTrue();

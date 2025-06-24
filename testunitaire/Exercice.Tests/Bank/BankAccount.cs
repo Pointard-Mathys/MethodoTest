@@ -19,15 +19,34 @@ public class BankAccount : IBankAccount
         Balance = initialBalance;
         TransactionHistory = new();
     }
-    
+
+    // Il faut s'assurer que le montant que l'on souhaite deposer soit strictement superieur a zero
     public void Deposit(decimal amount)
     {
-        throw new NotImplementedException();
+        if (amount <= 0)
+        {
+            throw new ArgumentException("Deposit amount must be positive.");
+        }
+
+        Balance += amount;
     }
 
+    // Il faut que le montant pour retirer soit positif et
+    // que le montant que l'on souhaite retirer soit suffisant par rapport à notre solde
     public void Withdraw(decimal amount)
     {
-        throw new NotImplementedException();
+        if (amount <= 0)
+        {
+            throw new ArgumentException("Withdrawal amount must be positive.");
+        }
+
+        if (amount > Balance)
+        {
+            throw new InvalidOperationException("Insufficient funds.");
+        }
+
+        Balance -= amount;
+        TransactionHistory.Add($"Withdraw: -{amount} (Remaining: {Balance})");
     }
 
     public void Transfer(BankAccount destinationAccount, decimal amount)

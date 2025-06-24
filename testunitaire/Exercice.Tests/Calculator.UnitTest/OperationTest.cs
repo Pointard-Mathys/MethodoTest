@@ -245,7 +245,7 @@ public class OperationTest
         var b = 3;
         
         //Act
-        int result = operation.Power(a, b);
+        double result = operation.Power(a, b);
         
         //Assert
         Assert.Equal(8, result);
@@ -411,7 +411,8 @@ public class OperationTest
         var operation = new Operation();
         int negativeNumber = -5;
 
-        Assert.Throws<ArgumentException>(() => operation.Factorial(negativeNumber));
+        Assert.Throws<ArgumentOutOfRangeException>(() => operation.Factorial(negativeNumber));
+
     }
 
     /// <summary>
@@ -476,7 +477,7 @@ public class OperationTest
         var a = -4;
 
         // Act & Assert
-        Assert.Throws<ArgumentException>(() => operation.SquareRoot(a));
+        Assert.Throws<ArgumentOutOfRangeException>(() => operation.SquareRoot(a));
     }
 
     /// <summary>

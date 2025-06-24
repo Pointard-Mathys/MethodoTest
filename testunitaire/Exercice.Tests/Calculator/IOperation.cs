@@ -41,7 +41,7 @@ public interface IOperation
     /// <param name="a">The base integer to be raised to a power.</param>
     /// <param name="b">The exponent to which the base integer will be raised.</param>
     /// <returns>The result of raising the base integer to the given power.</returns>
-    public int Power(int a, int b);
+    public double Power(int a, int b);
 
     /// <summary>
     /// Calculates the square of an integer and returns the result.

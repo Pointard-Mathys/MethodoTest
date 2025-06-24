@@ -74,7 +74,7 @@ public class BankAccountTest
         Assert.Equal(60, account.Balance);
     }
 
-    //Si on retire un montant négatif on aura une erreur
+    //Si on retire un montant nï¿½gatif on aura une erreur
     [Fact]
     public void Withdraw_NegativeAmount_ThrowsArgumentException()
     {

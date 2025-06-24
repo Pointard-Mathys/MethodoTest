@@ -11,7 +11,7 @@ public class StringProcessorTest
     [InlineData("12345", "54321")]
     public void Reverse_VariousInputs_ReturnsReversedString(string input, string expected)
     {
-        // Arrange
+        //Arrange
         var processor = new StringProcessor();
         
         // Act
@@ -28,7 +28,7 @@ public class StringProcessorTest
     [InlineData("", true)]
     public void IsPalindrome_VariousInputs_ReturnsCorrectResult(string input, bool expected)
     {
-        // Arrange
+        //Arrange
         var processor = new StringProcessor();
         
         // Act
@@ -37,6 +37,4 @@ public class StringProcessorTest
         // Assert
         Assert.Equal(expected, isPalindrome);
     }
-
-
 }

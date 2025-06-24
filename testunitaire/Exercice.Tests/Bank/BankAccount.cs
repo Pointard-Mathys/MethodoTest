@@ -2,7 +2,7 @@ namespace Bank;
 
 public class BankAccount : IBankAccount
 {
-    private decimal Balance { get; set; }
+    public decimal Balance { get; private set; }
     public string AccountNumber { get; set; }
     public List<string> TransactionHistory { get; private set; }
 

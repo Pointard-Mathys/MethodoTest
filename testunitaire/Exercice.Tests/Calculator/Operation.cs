@@ -7,8 +7,15 @@ public class Operation : IOperation
     public int Subtract(int a, int b) => a - b;
 
     public int Multiply(int a, int b) => a * b;
-
-    public int Power(int a, int b) => (int)Math.Pow(a, b);
+    
+    /// <summary>
+    /// On doit modifier la méthode Power pour qu'elle retourne un double
+    /// afin de gérer correctement les puissances négatives, qui donnent des résultats décimaux.
+    /// </summary>
+    public double Power(int a, int b)
+    {
+        return Math.Pow(a, b); 
+    }
 
     public int Square(int a) => a * a;
 

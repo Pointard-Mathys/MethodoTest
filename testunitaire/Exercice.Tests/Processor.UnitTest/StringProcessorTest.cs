@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Processor.Services;
 
 namespace Processor.UnitTest;
@@ -18,7 +19,20 @@ public class StringProcessorTest
         string result = processor.Reverse(input);
         
         // Assert
-        Assert.Equal(expected, result);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Reverse_WithNullInput_ReturnsNull()
+    {
+        // Arrange
+        var processor = new StringProcessor();
+
+        // Act
+        var result = processor.Reverse(null);
+
+        // Assert
+        result.Should().BeNull();
     }
     
     [Theory]
@@ -32,9 +46,125 @@ public class StringProcessorTest
         var processor = new StringProcessor();
         
         // Act
-        bool isPalindrome = processor.IsPalindrome(input);
+        var result = processor.IsPalindrome(input);
         
         // Assert
-        Assert.Equal(expected, isPalindrome);
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void IsPalindrome_WithNullInput_ReturnsFalse()
+    {
+        // Arrange
+        var processor = new StringProcessor();
+
+        // Act
+        var result = processor.IsPalindrome(null);
+
+        // Assert
+        result.Should().BeFalse();
+    }
+
+    [Fact]
+    public void IsPalindrome_WithNonAlphanumericCharacters_IsIgnoredInCheck()
+    {
+        // Arrange
+        var processor = new StringProcessor();
+
+        // Act
+        var result = processor.IsPalindrome("A!@#a");
+
+        // Assert
+        result.Should().BeTrue();
+    }
+    
+    [Theory]
+    [InlineData("Hello world", 2)]
+    [InlineData("   Leading and trailing spaces   ", 4)]
+    [InlineData("Multiple    spaces    between    words", 4)]
+    [InlineData("", 0)]
+    [InlineData("     ", 0)]
+    [InlineData("Word", 1)]
+    public void CountWords_VariousInputs_ReturnsCorrectCount(string input, int expectedCount)
+    {
+        // Arrange
+        var processor = new StringProcessor();
+
+        // Act
+        int result = processor.CountWords(input);
+
+        // Assert
+        result.Should().Be(expectedCount);
+    }
+    
+    [Fact]
+    public void CountWords_WithNullInput_ReturnsZero()
+    {
+        //Arrange
+        var processor = new StringProcessor();
+        
+        //Act
+        var result = processor.CountWords(null);
+        
+        //Asset
+        result.Should().Be(0);
+    }
+
+    [Fact]
+    public void CountWords_WithOnlySpaces_ReturnsZero()
+    {
+        //Arrange
+        var processor = new StringProcessor();
+        
+        //Act
+        var result = processor.CountWords("     ");
+        
+        //Assert
+        result.Should().Be(0);
+    }
+
+    [Theory]
+    [InlineData("hello", "Hello")]
+    [InlineData("Hello", "Hello")]
+    [InlineData("hELLO", "HELLO")]
+    [InlineData("", "")]
+    [InlineData(null, null)]
+    [InlineData("1hello", "1hello")]
+    public void Capitalize_VariousInputs_ReturnsCorrectString(string input, string expected)
+    {
+        // Arrange
+        var processor = new StringProcessor();
+
+        // Act
+        string result = processor.Capitalize(input);
+
+        //Assert
+        result.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Capitalize_WithNullInput_ReturnsNull()
+    {
+        //Arrange
+        var processor = new StringProcessor();
+        
+        //Act
+        var result = processor.Capitalize(null);
+        
+        //Assert
+        result.Should().BeNull();
+    }
+
+    [Fact]
+    public void Capitalize_WithOneCharacter_ReturnsUppercase()
+    {
+        //Arrange
+        var processor = new StringProcessor();
+        
+        //Act
+        var result = processor.Capitalize("x");
+        
+        //Assert
+        result.Should().Be("X");
     }
 }

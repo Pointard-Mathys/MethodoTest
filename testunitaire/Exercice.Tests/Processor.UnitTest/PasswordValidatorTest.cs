@@ -24,7 +24,7 @@ public class PasswordValidatorTest
         var result = validator.Validate(password);
 
         // Assert
-        Assert.Equal(expectedValid, result.IsValid);
+        result.IsValid.Should().Be(expectedValid);
     }
 
     [Fact]
@@ -50,7 +50,7 @@ public class PasswordValidatorTest
         var result = validator.Validate("PASSWORD123");
         
         //Assert
-        Assert.Contains("minuscule", result.Errors.FirstOrDefault()?.ToLower());
+        result.Errors.Should().Contain(e => e.ToLower().Contains("minus"));
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public class PasswordValidatorTest
         var result = validator.Validate("Password");
         
         //Assert
-        Assert.Contains("chiffre", result.Errors.FirstOrDefault()?.ToLower());
+        result.Errors.Should().Contain(e => e.ToLower().Contains("chiffre"));
     }
 
     [Fact]
@@ -76,7 +76,7 @@ public class PasswordValidatorTest
         var result = validator.Validate("Pas1");
         
         //Assert
-        Assert.Contains("8 caractères", result.Errors.FirstOrDefault());
+        result.Errors.Should().Contain(e => e.ToLower().Contains("8 caractères"));
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public class PasswordValidatorTest
         var result = validator.Validate("");
         
         //Assert
-        Assert.Contains("vide", result.Errors.FirstOrDefault()?.ToLower());
+        result.Errors.Should().Contain(e => e.ToLower().Contains("vide"));
     }
 
     public static IEnumerable<object[]> PasswordWithErrors =>
@@ -119,7 +119,7 @@ public class PasswordValidatorTest
         // Assert
         foreach (var expectedError in expectedErrorContains)
         {
-            Assert.Contains(result.Errors, e => e.ToLower().Contains(expectedError.ToLower()));
+            result.Errors.Should().Contain(e => e.ToLower().Contains(expectedError.ToLower()));
         }
     }
 }

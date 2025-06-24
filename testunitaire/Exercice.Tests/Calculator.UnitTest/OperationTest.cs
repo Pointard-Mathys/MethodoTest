@@ -8,7 +8,7 @@ public class OperationTest
     [Fact]
     public void Add_WithTwoPositiveNumbers_ShouldReturnSum()
     {
-        //Assert
+        //Arrange
         var operation = new Operation();
         var a = 5;
         var b = 3;
@@ -26,7 +26,7 @@ public class OperationTest
     [Fact]
     public void Add_WithOnePositiveAndNegativeNumbers_ShouldReturnSum()
     {
-        //Assert
+        //Arrange
         var operation = new Operation();
         var a = 5;
         var b = -3;
@@ -44,7 +44,7 @@ public class OperationTest
     [Fact]
     public void Add_WithTwoNegativeNumbers_ShouldReturnSum()
     {
-        //Assert
+        //Arrange
         var operation = new Operation();
         var a = -5;
         var b = -3;

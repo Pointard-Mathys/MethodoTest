@@ -2,6 +2,7 @@ namespace Calculator;
 
 public interface IOperation
 {
+    
     /// <summary>
     /// Adds two integers and returns the result.
     /// </summary>

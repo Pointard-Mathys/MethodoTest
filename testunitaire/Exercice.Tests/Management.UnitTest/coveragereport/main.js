@@ -213,8 +213,8 @@ var assemblies = [
   {
     "name": "Management",
     "classes": [
-      { "name": "Management.Model.Student", "rp": "Management_Student.html", "cl": 5, "ucl": 2, "cal": 7, "tl": 14, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Management.Service.StudentManager", "rp": "Management_StudentManager.html", "cl": 3, "ucl": 15, "cal": 18, "tl": 44, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Management.Model.Student", "rp": "Management_Student.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 14, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Management.Service.StudentManager", "rp": "Management_StudentManager.html", "cl": 40, "ucl": 0, "cal": 40, "tl": 66, "cb": 16, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Management_Program.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];

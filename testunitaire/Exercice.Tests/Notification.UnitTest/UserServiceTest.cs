@@ -63,4 +63,46 @@ public class UserServiceTest
         act.Should().Throw<InvalidOperationException>()
             .WithMessage("User already exists");
     }
+    
+    [Fact]
+    public void GetUser_WithValidId_ShouldReturnUser()
+    {
+        // Arrange
+        var userId = 1;
+        var expectedUser = new User { Id = userId, Name = "Test", Email = "test@domain.com" };
+
+        var repoMock = new Mock<IUserRepository>();
+        repoMock.Setup(r => r.GetById(userId)).Returns(expectedUser);
+
+        var emailMock = new Mock<IEmailService>(); // pas utilisé ici mais requis par le constructeur
+        var service = new UserService(repoMock.Object, emailMock.Object);
+
+        // Act
+        var result = service.GetUser(userId);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeEquivalentTo(expectedUser); // compare tous les champs
+        repoMock.Verify(r => r.GetById(userId), Times.Once); // vérifie que le repo a bien été appelé
+    }
+
+    [Fact]
+    public void GetUser_WithUnknownId_ShouldReturnNull()
+    {
+        // Arrange
+        var userId = 999;
+
+        var repoMock = new Mock<IUserRepository>();
+        repoMock.Setup(r => r.GetById(userId)).Returns((User?)null);
+
+        var emailMock = new Mock<IEmailService>();
+        var service = new UserService(repoMock.Object, emailMock.Object);
+
+        // Act
+        var result = service.GetUser(userId);
+
+        // Assert
+        result.Should().BeNull();
+    }
+
 }

@@ -169,7 +169,7 @@ public class StudentManagerTest
     }
 
 
-    // On teste que si aucun etudiant ne correspond à la tranche d’age demandee, la liste retournee est vide.
+    // On teste que si aucun etudiant ne correspond  la tranche dage demandee, la liste retournee est vide.
     [Fact]
     public void GetStudentsByAge_NoMatches_ReturnsEmptyList()
     {
@@ -184,7 +184,7 @@ public class StudentManagerTest
     }
 
 
-    // On verifie qu’au moins un etudiant est bien retourne quand il correspond à la tranche d’age demandee.
+    // On verifie quau moins un etudiant est bien retourne quand il correspond  la tranche dage demandee.
     [Fact]
     public void GetStudentsByAge_WithMatches_ReturnsNotEmpty()
     {

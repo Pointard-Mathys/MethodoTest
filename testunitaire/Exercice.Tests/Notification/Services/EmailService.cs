@@ -13,18 +13,24 @@ namespace Notification.Services
             _from = from;
         }
 
+        // Méthode protégée virtuelle pour faciliter le mock en test
+        public Task SendMailAsync(MailMessage mail)
+        {
+            using var smtp = new SmtpClient();
+            return smtp.SendMailAsync(mail);
+        }
+
         public virtual async Task<bool> SendEmailAsync(string to, string subject, string body)
         {
             if (!IsValidEmail(to)) return false;
 
             try
             {
-                using var smtp = new SmtpClient();
                 var mail = new MailMessage(_from, to, subject, body)
                 {
                     IsBodyHtml = true
                 };
-                await smtp.SendMailAsync(mail);
+                await SendMailAsync(mail);  // Appel de la méthode mockable
                 return true;
             }
             catch

@@ -213,12 +213,12 @@ var assemblies = [
   {
     "name": "Notification",
     "classes": [
-      { "name": "Notification.Model.User", "rp": "Notification_User.html", "cl": 2, "ucl": 1, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Notification.Services.EmailService", "rp": "Notification_EmailService.html", "cl": 17, "ucl": 15, "cal": 32, "tl": 58, "cb": 2, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Notification.Model.User", "rp": "Notification_User.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Notification.Services.EmailService", "rp": "Notification_EmailService.html", "cl": 31, "ucl": 1, "cal": 32, "tl": 58, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Notification.Services.Logger", "rp": "Notification_Logger.html", "cl": 20, "ucl": 0, "cal": 20, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Notification.Services.NotificationService", "rp": "Notification_NotificationService.html", "cl": 35, "ucl": 0, "cal": 35, "tl": 60, "cb": 10, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Notification.Services.SmsService", "rp": "Notification_SmsService.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 19, "cb": 1, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Notification.Services.UserService", "rp": "Notification_UserService.html", "cl": 14, "ucl": 3, "cal": 17, "tl": 36, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Notification.Services.UserService", "rp": "Notification_UserService.html", "cl": 17, "ucl": 0, "cal": 17, "tl": 36, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Notification_Program.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];

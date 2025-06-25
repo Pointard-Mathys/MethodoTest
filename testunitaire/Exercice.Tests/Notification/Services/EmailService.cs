@@ -19,7 +19,7 @@ namespace Notification.Services
 
             try
             {
-                using var smtp = new SmtpClient(); // utilise la config système
+                using var smtp = new SmtpClient();
                 var mail = new MailMessage(_from, to, subject, body)
                 {
                     IsBodyHtml = true

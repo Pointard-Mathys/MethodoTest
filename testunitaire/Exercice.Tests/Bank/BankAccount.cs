@@ -2,6 +2,7 @@ namespace Bank;
 
 public class BankAccount : IBankAccount
 {
+    //Passer Balance en public mais pas sont set
     public decimal Balance { get; private set; }
     public string AccountNumber { get; set; }
     public List<string> TransactionHistory { get; private set; }
@@ -32,7 +33,7 @@ public class BankAccount : IBankAccount
     }
 
     // Il faut que le montant pour retirer soit positif et
-    // que le montant que l'on souhaite retirer soit suffisant par rapport à notre solde
+    // que le montant que l'on souhaite retirer soit suffisant par rapport a notre solde
     public void Withdraw(decimal amount)
     {
         if (amount <= 0)

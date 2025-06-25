@@ -108,3 +108,4 @@ public class EmailValidatorTest
         Assert.False(result);
     }
 }
+

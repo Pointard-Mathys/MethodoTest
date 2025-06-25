@@ -1,16 +1,19 @@
+using System.Text.RegularExpressions;
 using Notification.Contracts;
 
-namespace Notification.Services;
-
-public class SmsService : ISmsService
+namespace Notification.Services
 {
-    public Task<bool> SendSmsAsync(string phoneNumber, string message)
+    public class SmsService : ISmsService
     {
-        throw new NotImplementedException();
-    }
+        public Task<bool> SendSmsAsync(string phoneNumber, string message)
+        {
+            if (!IsValidPhoneNumber(phoneNumber)) return Task.FromResult(false);
+            return Task.FromResult(true);
+        }
 
-    public bool IsValidPhoneNumber(string phoneNumber)
-    {
-        throw new NotImplementedException();
+        public bool IsValidPhoneNumber(string phoneNumber)
+        {
+            return Regex.IsMatch(phoneNumber, @"^\+\d{10,}$");
+        }
     }
 }

@@ -22,10 +22,6 @@ namespace Tournoi.Services
 
             return BonusAndPenaltyCalculator.ApplyPenalties(finalScore, penaltyPoints);
         }
-
-        
-        
-        
         
         private void ValidateInput(List<MatchResult> matches, int penaltyPoints)
         {

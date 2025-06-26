@@ -213,7 +213,7 @@ var assemblies = [
   {
     "name": "Tournoi",
     "classes": [
-      { "name": "Program", "rp": "Tournoi_Program.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 3, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "Tournoi_Program.html", "cl": 0, "ucl": 55, "cal": 55, "tl": 76, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Models.MatchResult", "rp": "Tournoi_MatchResult.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Models.Player", "rp": "Tournoi_Player.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Models.ScoreCalculator", "rp": "Tournoi_ScoreCalculator.html", "cl": 31, "ucl": 0, "cal": 31, "tl": 52, "cb": 14, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -230,9 +230,17 @@ var metrics = [{ "name": "Crap Score", "abbreviation": "crp", "explanationUrl": 
 var historicCoverageExecutionTimes = [];
 
 var riskHotspotMetrics = [
+      { "name": "Crap Score", "explanationUrl": "https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" },
+      { "name": "Cyclomatic complexity", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" },
 ];
 
 var riskHotspots = [
+  {
+    "assembly": "Tournoi", "class": "Program", "reportPath": "Tournoi_Program.html", "methodName": "Main()", "methodShortName": "Main()", "fileIndex": 0, "line": 10,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
 ];
 
 var branchCoverageAvailable = true;

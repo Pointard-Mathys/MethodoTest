@@ -144,6 +144,33 @@ public class TournamentRankingTest
         act.Should().Throw<ArgumentNullException>()
            .WithMessage("*matches*");
     }
+    
+    /// <summary>
+    /// Doit lever une exception si le ScoreCalculator est null à l’injection.
+    /// </summary>
+    [Fact]
+    public void Constructor_Should_Throw_If_ScoreCalculator_Is_Null()
+    {
+        // Act
+        Action act = () => new ScoreCalculatorService(null!);
+
+        // Assert
+        act.Should().Throw<ArgumentNullException>()
+            .WithParameterName("scoreCalculator");
+    }
+
+    /// <summary>
+    /// Doit créer une instance si le ScoreCalculator est valide.
+    /// </summary>
+    [Fact]
+    public void Constructor_Should_Create_Instance_When_ScoreCalculator_Is_Valid()
+    {
+        var mockScoreCalculator = new ScoreCalculator(); // ou un mock si interface
+
+        var service = new ScoreCalculatorService(mockScoreCalculator);
+
+        service.Should().NotBeNull();
+    }
 
     /// <summary>
     /// Doit lever une exception si les pénalités sont négatives.

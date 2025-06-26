@@ -52,11 +52,11 @@ public class BaseScoreCalculatorTests
     /// Doit lever une exception si le scoreCalculator est null.
     /// </summary>
     [Fact]
-    public void Should_Throw_If_ScoreCalculator_Is_Null()
+    public void Should_Throw_If_MatchResultService_Is_Null()
     {
         Action act = () => new TournamentRanking(null!);
 
         act.Should().Throw<ArgumentNullException>()
-            .WithMessage("*scoreCalculator*");
+            .WithMessage("*matchResult*");
     }
 }

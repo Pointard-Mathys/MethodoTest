@@ -216,10 +216,11 @@ var assemblies = [
       { "name": "Program", "rp": "Tournoi_Program.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 3, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Models.MatchResult", "rp": "Tournoi_MatchResult.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Models.Player", "rp": "Tournoi_Player.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Tournoi.Models.ScoreCalculator", "rp": "Tournoi_ScoreCalculator.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 52, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Tournoi.Models.ScoreCalculator", "rp": "Tournoi_ScoreCalculator.html", "cl": 31, "ucl": 0, "cal": 31, "tl": 52, "cb": 14, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Services.BaseScoreCalculator", "rp": "Tournoi_BaseScoreCalculator.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 30, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Services.BonusAndPenaltyCalculator", "rp": "Tournoi_BonusAndPenaltyCalculator.html", "cl": 22, "ucl": 0, "cal": 22, "tl": 38, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Tournoi.Services.ScoreCalculatorService", "rp": "Tournoi_ScoreCalculatorService.html", "cl": 18, "ucl": 0, "cal": 18, "tl": 39, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Tournoi.Services.MatchResultService", "rp": "Tournoi_MatchResultService.html", "cl": 18, "ucl": 0, "cal": 18, "tl": 43, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Tournoi.Services.ScoreCalculatorService", "rp": "Tournoi_ScoreCalculatorService.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 43, "cb": 10, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Tournoi.Services.TournamentRanking", "rp": "Tournoi_TournamentRanking.html", "cl": 24, "ucl": 0, "cal": 24, "tl": 55, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
@@ -229,17 +230,9 @@ var metrics = [{ "name": "Crap Score", "abbreviation": "crp", "explanationUrl": 
 var historicCoverageExecutionTimes = [];
 
 var riskHotspotMetrics = [
-      { "name": "Crap Score", "explanationUrl": "https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" },
-      { "name": "Cyclomatic complexity", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" },
 ];
 
 var riskHotspots = [
-  {
-    "assembly": "Tournoi", "class": "Tournoi.Models.ScoreCalculator", "reportPath": "Tournoi_ScoreCalculator.html", "methodName": "CalculateScore(System.Collections.Generic.List`1<Tournoi.Models.MatchResult>,System.Boolean,System.Int32)", "methodShortName": "CalculateScore(...)", "fileIndex": 0, "line": 8,
-    "metrics": [
-      { "value": 210, "exceeded": true },
-      { "value": 14, "exceeded": false },
-    ]},
 ];
 
 var branchCoverageAvailable = true;

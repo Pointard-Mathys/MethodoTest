@@ -87,21 +87,29 @@ public class UserServiceTest
     }
 
     [Fact]
+    // Test unitaire : vérifie que GetUser retourne null si l'utilisateur n'existe pas dans la base
     public void GetUser_WithUnknownId_ShouldReturnNull()
     {
-        // Arrange
-        var userId = 999;
+        // Arrange : préparation du test
 
+        var userId = 999; // ID d'utilisateur inexistant
+
+        // Création d'un mock du dépôt utilisateur
         var repoMock = new Mock<IUserRepository>();
+
+        // Configuration du mock : lorsqu'on appelle GetById avec cet ID, on retourne null
         repoMock.Setup(r => r.GetById(userId)).Returns((User?)null);
 
+        // Création d'un mock du service email (non utilisé ici mais requis par le constructeur)
         var emailMock = new Mock<IEmailService>();
+
+        // Instanciation du UserService avec les mocks
         var service = new UserService(repoMock.Object, emailMock.Object);
 
-        // Act
+        // Act : appel de la méthode à tester
         var result = service.GetUser(userId);
 
-        // Assert
+        // Assert : vérifie que la méthode retourne bien null
         result.Should().BeNull();
     }
 

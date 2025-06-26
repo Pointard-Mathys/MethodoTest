@@ -69,7 +69,6 @@ public class NumberListTest
     
         // Assert
         maximum.Should().Be(99);
-
     }
 
     [Fact]

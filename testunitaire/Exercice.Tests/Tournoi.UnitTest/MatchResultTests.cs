@@ -1,4 +1,5 @@
-﻿using Tournoi.Models;
+﻿using FluentAssertions;
+using Tournoi.Models;
 using Tournoi.Services;
 
 namespace Tournoi.UnitTest;
@@ -11,6 +12,9 @@ public class MatchResultTests
     private static MatchResult D() => new() { Outcome = MatchResult.Result.Draw };
     private static MatchResult L() => new() { Outcome = MatchResult.Result.Loss };
 
+    /// <summary>
+    /// Un joueur disqualifié doit toujours obtenir un score de 0.
+    /// </summary>
     [Fact]
     public void CalculateScore_PlayerDisqualified_ReturnsZero()
     {
@@ -18,39 +22,57 @@ public class MatchResultTests
 
         var score = _service.CalculateScore(matches, isDisqualified: true);
 
-        Assert.Equal(0, score);
+        score.Should().Be(0);
     }
 
+    /// <summary>
+    /// Applique correctement bonus et pénalité.
+    /// </summary>
     [Fact]
     public void CalculateScore_WithBonusAndPenalty_AppliesAllModifiers()
     {
-        // 3 Victoires consécutives = 9 pts + bonus 5 = 14, –4 de pénalité = 10
+        // 3 victoires : 9 pts + bonus 5 = 14, –4 de pénalité = 10
         var matches = new List<MatchResult> { W(), W(), W() };
 
         var score = _service.CalculateScore(matches, penaltyPoints: 4);
 
-        Assert.Equal(10, score);
+        score.Should().Be(10);
     }
 
+    /// <summary>
+    /// Aucun match : score attendu = 0.
+    /// </summary>
     [Fact]
     public void CalculateScore_WithNoMatches_ReturnsZero()
     {
         var score = _service.CalculateScore(new List<MatchResult>());
 
-        Assert.Equal(0, score);
+        score.Should().Be(0);
     }
 
+    /// <summary>
+    /// La méthode doit lever une exception si la liste des matchs est null.
+    /// </summary>
     [Fact]
     public void CalculateScore_NullMatches_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _service.CalculateScore(null!));
+        Action act = () => _service.CalculateScore(null!);
+
+        act.Should().Throw<ArgumentNullException>()
+           .WithParameterName("matches");
     }
 
+    /// <summary>
+    /// La méthode doit lever une exception si les points de pénalité sont négatifs.
+    /// </summary>
     [Fact]
     public void CalculateScore_NegativePenalty_ThrowsArgumentException()
     {
         var matches = new List<MatchResult>();
 
-        Assert.Throws<ArgumentException>(() => _service.CalculateScore(matches, penaltyPoints: -1));
+        Action act = () => _service.CalculateScore(matches, penaltyPoints: -1);
+
+        act.Should().Throw<ArgumentException>()
+           .WithParameterName("penaltyPoints");
     }
 }

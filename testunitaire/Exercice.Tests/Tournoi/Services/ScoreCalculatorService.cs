@@ -9,6 +9,26 @@ namespace Tournoi.Services
     {
         public int CalculateScore(List<MatchResult> matches, bool isDisqualified = false, int penaltyPoints = 0)
         {
+            ValidateInput(matches, penaltyPoints);
+
+            if (isDisqualified)
+            {
+                return 0;
+            }
+
+            int baseScore = BaseScoreCalculator.CalculateBaseScore(matches);
+            int bonus = BonusAndPenaltyCalculator.CalculateBonus(matches);
+            int finalScore = baseScore + bonus;
+
+            return BonusAndPenaltyCalculator.ApplyPenalties(finalScore, penaltyPoints);
+        }
+
+        
+        
+        
+        
+        private void ValidateInput(List<MatchResult> matches, int penaltyPoints)
+        {
             if (matches == null)
             {
                 throw new ArgumentNullException(nameof(matches), "The list of matches cannot be null.");
@@ -18,39 +38,6 @@ namespace Tournoi.Services
             {
                 throw new ArgumentException("Penalty points cannot be negative.", nameof(penaltyPoints));
             }
-
-            if (isDisqualified)
-            {
-                return 0;
-            }
-
-            int score = 0;
-            int consecutiveWins = 0;
-
-            foreach (var match in matches)
-            {
-                switch (match.Outcome)
-                {
-                    case MatchResult.Result.Win:
-                        score += 3;
-                        consecutiveWins++;
-                        if (consecutiveWins == 3)
-                        {
-                            score += 5;
-                        }
-                        break;
-                    case MatchResult.Result.Draw:
-                        score += 1;
-                        consecutiveWins = 0;
-                        break;
-                    case MatchResult.Result.Loss:
-                        consecutiveWins = 0;
-                        break;
-                }
-            }
-
-            score = Math.Max(score - penaltyPoints, 0);
-            return score;
         }
     }
 }

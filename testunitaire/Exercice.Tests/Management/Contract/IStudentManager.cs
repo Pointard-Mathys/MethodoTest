@@ -1,7 +1,9 @@
 using Management.Model;
 
-namespace Management.Service;
+namespace Management.Contract;
 
+//Interface de la gestion des étudiants
+//Rend le code plus léger, elle permet d'importer//implémenter les différente méthodes d'une class dans différents tests
 public interface IStudentManager
 {
     /// <summary>

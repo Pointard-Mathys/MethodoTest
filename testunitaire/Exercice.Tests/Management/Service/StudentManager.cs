@@ -1,7 +1,9 @@
+using Management.Contract;
 using Management.Model;
 
 namespace Management.Service;
 
+//Logique métier de la gestion des étudiants
 public class StudentManager : IStudentManager
 {
     private readonly List<Student> _students = new ();
@@ -31,7 +33,7 @@ public class StudentManager : IStudentManager
 
         return _students.Where(s => s.Age >= minAge && s.Age <= maxAge).ToList();
     }
-
+    //Ajouter une condition pour éviter d'ajouter des notes négatifs
     public List<Student> GetTopStudents(int count)
     {
         if (count <= 0)

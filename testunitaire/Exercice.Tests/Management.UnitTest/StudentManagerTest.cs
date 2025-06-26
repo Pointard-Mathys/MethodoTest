@@ -12,6 +12,7 @@ namespace Management.UnitTest;
 
 public class StudentManagerTest
 {
+    // Crée une instance u de StudentManager
     private readonly StudentManager _manager = new();
 
     /// <summary>
@@ -22,11 +23,14 @@ public class StudentManagerTest
     {
         // Arrange
         var student = new Student { Id = 1, FirstName = "John", LastName = "Doe", Age = 20 };
-
+        
         // Act
         _manager.AddStudent(student);
 
+
         // Assert
+        //Assert.Single(_manager.Students); // Vérifie qu'il y a un seul élément
+        //Assert.Equal(student, _manager.Students.Single()); // Compare le contenu
         _manager.Students.Should().ContainSingle().Which.Should().BeEquivalentTo(student);
     }
 
@@ -238,9 +242,22 @@ public class StudentManagerTest
     public void GetTopStudents_ReturnsHighestAverageInOrder()
     {
         // Arrange
-        _manager.AddStudent(new Student { Id = 1, FirstName = "Zoe", LastName = "Z", Grades = new() { 12, 14 } });
-        _manager.AddStudent(new Student { Id = 2, FirstName = "Alice", LastName = "A", Grades = new() { 19, 20 } });
-        _manager.AddStudent(new Student { Id = 3, FirstName = "Bob", LastName = "B", Grades = new() { 15, 16 } });
+        _manager.AddStudent(new Student
+        {
+            Id = 1, FirstName = "Zoe", LastName = "Z", Grades = new() { 12 }
+        });
+        _manager.AddStudent(new Student
+        {
+            Id = 4, FirstName = "Paul", LastName = "Z", Grades = new() { }
+        });
+        _manager.AddStudent(new Student
+        {
+            Id = 2, FirstName = "Alice", LastName = "A", Grades = new() { 19, 20, 17 }
+        });
+        _manager.AddStudent(new Student
+        {
+            Id = 3, FirstName = "Bob", LastName = "B", Grades = new() { 15, 16 }
+        });
 
         // Act
         var top = _manager.GetTopStudents(2);

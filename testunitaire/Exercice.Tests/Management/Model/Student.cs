@@ -1,5 +1,7 @@
 namespace Management.Model;
 
+//Définition de notre objet Student
+
 public class Student
 {
     public int Id { get; set; }

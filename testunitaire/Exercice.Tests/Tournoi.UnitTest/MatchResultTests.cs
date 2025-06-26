@@ -3,9 +3,9 @@ using Tournoi.Services;
 
 namespace Tournoi.UnitTest;
 
-public class ScoreCalculatorServiceTests
+public class MatchResultTests
 {
-    private readonly ScoreCalculatorService _service = new();
+    private readonly MatchResultService _service = new();
 
     private static MatchResult W() => new() { Outcome = MatchResult.Result.Win };
     private static MatchResult D() => new() { Outcome = MatchResult.Result.Draw };

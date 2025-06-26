@@ -1,43 +1,43 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Tournoi.Contracts;
+using System.Linq;
 using Tournoi.Models;
 
 namespace Tournoi.Services
 {
-    public class ScoreCalculatorService : IScoreCalculatorService
+    /// <summary>
+    /// Contrat du service de calcul de score.
+    /// </summary>
+    public interface IScoreCalculatorService
     {
-        public int CalculateScore(List<MatchResult> matches, bool isDisqualified = false, int penaltyPoints = 0)
+        int CalculateScore(IEnumerable<MatchResult> matches,
+            bool isDisqualified = false,
+            int penaltyPoints   = 0);
+    }
+
+    /// <summary>
+    /// Implémentation du service.
+    /// </summary>
+    public sealed class ScoreCalculatorService : IScoreCalculatorService
+    {
+        private readonly ScoreCalculator _scoreCalculator;
+
+        /// <summary>
+        /// Injection du composant métier (facile à remplacer en test).
+        /// </summary>
+        public ScoreCalculatorService(ScoreCalculator scoreCalculator)
         {
-            ValidateInput(matches, penaltyPoints);
-
-            if (isDisqualified)
-            {
-                return 0;
-            }
-
-            int baseScore = BaseScoreCalculator.CalculateBaseScore(matches);
-            int bonus = BonusAndPenaltyCalculator.CalculateBonus(matches);
-            int finalScore = baseScore + bonus;
-
-            return BonusAndPenaltyCalculator.ApplyPenalties(finalScore, penaltyPoints);
+            _scoreCalculator = scoreCalculator
+                               ?? throw new ArgumentNullException(nameof(scoreCalculator));
         }
 
-        
-        
-        
-        
-        private void ValidateInput(List<MatchResult> matches, int penaltyPoints)
+        public int CalculateScore(IEnumerable<MatchResult> matches,
+            bool isDisqualified = false,
+            int penaltyPoints   = 0)
         {
-            if (matches == null)
-            {
-                throw new ArgumentNullException(nameof(matches), "The list of matches cannot be null.");
-            }
-
-            if (penaltyPoints < 0)
-            {
-                throw new ArgumentException("Penalty points cannot be negative.", nameof(penaltyPoints));
-            }
+            // Convertit en List pour l’API attendue par ScoreCalculator
+            var matchList = matches?.ToList();
+            return _scoreCalculator.CalculateScore(matchList, isDisqualified, penaltyPoints);
         }
     }
 }

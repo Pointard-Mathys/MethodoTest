@@ -7,15 +7,15 @@ using Tournoi.Models;
 namespace Tournoi.Services;
 
 /// <summary>
-/// Provides ranking utilities on top of <see cref="ScoreCalculatorService"/>.
+/// Provides ranking utilities on top of <see cref="MatchResultService"/>.
 /// </summary>
 public class TournamentRanking
 {
-    private readonly ScoreCalculatorService _scoreCalculator;
+    private readonly MatchResultService _matchResult;
 
-    public TournamentRanking(ScoreCalculatorService scoreCalculator)
+    public TournamentRanking(MatchResultService matchResult)
     {
-        _scoreCalculator = scoreCalculator ?? throw new ArgumentNullException(nameof(scoreCalculator));
+        _matchResult = matchResult ?? throw new ArgumentNullException(nameof(matchResult));
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public class TournamentRanking
             .Select(p => new
             {
                 Player = p,
-                Score = _scoreCalculator.CalculateScore(p.Matches, p.IsDisqualified, p.PenaltyPoints)
+                Score = _matchResult.CalculateScore(p.Matches, p.IsDisqualified, p.PenaltyPoints)
             })
             .OrderByDescending(x => x.Score)
             .ThenBy(x => x.Player.Name, StringComparer.OrdinalIgnoreCase)
@@ -49,7 +49,7 @@ public class TournamentRanking
         if (!ranking.Any()) return null;
 
         var topPlayer = ranking.First();
-        var topScore = _scoreCalculator.CalculateScore(topPlayer.Matches, topPlayer.IsDisqualified, topPlayer.PenaltyPoints);
+        var topScore = _matchResult.CalculateScore(topPlayer.Matches, topPlayer.IsDisqualified, topPlayer.PenaltyPoints);
         return topScore > 0 ? topPlayer : null;
     }
 }

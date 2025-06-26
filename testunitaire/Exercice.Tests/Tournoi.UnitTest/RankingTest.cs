@@ -10,7 +10,7 @@ namespace Tournoi.UnitTest;
 
 public class TournamentRankingTest
 {
-    private readonly ScoreCalculatorService _calculator = new();
+    private readonly MatchResultService _calculator = new();
     private TournamentRanking Ranking => new(_calculator);
 
     #region Helpers
